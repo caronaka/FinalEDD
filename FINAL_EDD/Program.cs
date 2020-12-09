@@ -12,7 +12,11 @@ namespace FINAL_EDD
     {
         static void Main(string[] args)
         {
-            /*Realizar un programa que por medio de una Cola permita el ingreso de Pedidos.
+            /*
+             
+            CONSIGNA
+
+            Realizar un programa que por medio de una Cola permita el ingreso de Pedidos.
             Los elementos deberán ser un número entero, validar que el número sea mayor a cero y menor que 999.
 
             El menú del programa tendrá las siguientes opciones:
@@ -30,17 +34,25 @@ namespace FINAL_EDD
             Cada elemento que se liste debe aparecer con el formato “1 – elemento”.
             */
 
-            //Pedidos nuevoPedido = new Pedidos(1, "milanesa");
-            //Pedidos nuevoPedido2 = new Pedidos(2, "hamburguesa");
-            //Pedidos nuevoPedido3 = new Pedidos(3, "pancho");
 
-            Queue<Pedidos> cola = new Queue<Pedidos>();  //me tiraba error porque al crear el queue no aclaraba el tipo de datos pedidos
 
-            //cola.Enqueue(nuevoPedido);
-            //cola.Enqueue(nuevoPedido2);
-            //cola.Enqueue(nuevoPedido3);
+            /*
+             
+            FINAL EDD TEMA 2 - COLA
 
-            List<Queue<Pedidos>> listaCola = new List<Queue<Pedidos>>();
+            Marco teorico:
+            El programa se basa en diferentes acciones sobre una COLA de Pedidos, donde cada pedido esta compuesto por "id - nombre".
+            Sobre el id recaen las validaciones de entero y de rango entre 0 y 999.
+            Solo existe una cola por ejecucion.
+
+            */
+
+
+            Queue<Pedidos> cola = new Queue<Pedidos>();  //Adv: Me tiraba error porque al crear el queue no aclaraba el tipo de datos pedidos
+
+
+
+            List<Queue<Pedidos>> listaCola = new List<Queue<Pedidos>>();  //creo esta lista de colas para validar si la cola NO existe
 
             string opc = "0";
             while (opc != "11") //Creamos un ciclo para que se repita el menu hasta que el usuario quiera salir
@@ -70,13 +82,13 @@ namespace FINAL_EDD
                 {
                     case "1":
 
-                        cola = CrearCola(listaCola);
+                        cola = CrearCola(listaCola); // la guardo en la variable que sera usada por los otros cases
                         break;
 
                     case "2":
-                        if (!listaCola.Any())
+                        if (!listaCola.Any())  //valida que la cola exista
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Red;  //cambia el color de texto a rojo
                             Console.WriteLine("No existe la cola.");
                             Console.ResetColor();                      
                         }
@@ -201,7 +213,7 @@ namespace FINAL_EDD
 
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nEsa opcion no es valida.");
+                        Console.WriteLine("Esa opcion no es valida.");
                         Console.ResetColor();
                         break;
 
@@ -269,7 +281,7 @@ namespace FINAL_EDD
 
         public static Queue<Pedidos> AgregarPedido(Queue<Pedidos> cola)
         {
-            List<int> listaID = new List<int>(); //creo esta lista con los id de la cola para verificar si ya existe luego en las validacion
+            List<int> listaID = new List<int>(); //creo esta lista con los id de la cola para verificar si ya existe luego en la validacion
 
             foreach (Pedidos pedido in cola)
             {
@@ -279,6 +291,8 @@ namespace FINAL_EDD
 
             Console.WriteLine("Ingrese el id del pedido: ");
             var string_id = Console.ReadLine();
+
+            //valido que el id sea un entero, ente en el rango 0-999 inclusive y que no exista ya
 
             while (ValidacionIdInt(string_id) == false || ValidacionIdRango(string_id) == false || listaID.Contains(Convert.ToInt32(string_id)) == true)
             {
@@ -322,7 +336,7 @@ namespace FINAL_EDD
                 listaID.Add(pedido.Id);
             }
 
-            if (cola.Count() == 0)
+            if (cola.Count() == 0)  //valida que la cola contenga elementos a eliminar
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("La cola esta vacia.");
@@ -348,7 +362,7 @@ namespace FINAL_EDD
 
                 int id = Convert.ToInt32(string_id);
 
-                // Remove the id element from the queue
+                //elimina el elemento donde coincide el id
                 cola = new Queue<Pedidos>(cola.Where(x => x.Id != id));
 
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -390,7 +404,7 @@ namespace FINAL_EDD
             }
             else
             {
-                Pedidos ped = cola.Peek();
+                Pedidos ped = cola.Peek(); //accede al primer elemento
                 Console.WriteLine("{0} - {1}", ped.Id, ped.Nombre);
             }
         }
@@ -405,7 +419,7 @@ namespace FINAL_EDD
             }
             else
             {
-                Pedidos ped = cola.Last();
+                Pedidos ped = cola.Last(); //accede al ultimo
                 Console.WriteLine("{0} - {1}", ped.Id, ped.Nombre);
             }
         }
@@ -488,7 +502,7 @@ namespace FINAL_EDD
         {
             try
             {
-                Console.WriteLine("\nIngrese el nombre del archivo: "); //Te pide el nombre del archivo
+                Console.WriteLine("\nIngrese el nombre del archivo sin extension: "); //Te pide el nombre del archivo
 
                 string fileName = Console.ReadLine() + ".txt";  //Agrega extension
 
@@ -524,7 +538,7 @@ namespace FINAL_EDD
 
         }
 
-        public static bool ValidacionIdInt (string id_string)
+        public static bool ValidacionIdInt (string id_string) //valida si es entero, si lo es devuelve true, si no, false
         {
             int id;
             if (!int.TryParse(id_string, out id))
@@ -537,7 +551,7 @@ namespace FINAL_EDD
             }
         }
 
-        public static bool ValidacionIdRango(string id_string)
+        public static bool ValidacionIdRango(string id_string) //valida si esta en el rango 0-999 inclusive, caso contrario devuelve false
         {
             int id = Convert.ToInt32(id_string);
             if (id < 0 || id > 999)

@@ -10,6 +10,7 @@ namespace FINAL_EDD
     {
 
         //Atributos id y nombre
+        
         public int Id { get; set; }
         public string Nombre { get; set; }
 
