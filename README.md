@@ -24,6 +24,8 @@ Cada elemento que se liste debe aparecer con el formato “1 – elemento”.
 
 ## Marco teórico
 
+El programa es aplicable a cualquier rubro ya sea comida, objetos, etc. No está especificado.
 El programa se basa en diferentes acciones sobre una COLA de Pedidos, donde cada pedido está compuesto por "id - nombre".
 Sobre el id recaen las validaciones de entero y de rango entre 0 y 999.
 Solo existe una cola por ejecución.
+
