@@ -21,3 +21,9 @@ El menú del programa tendrá las siguientes opciones:
 Estas son las opciones básicas del menú, se deberán agregar 2 opciones más.
 Cada elemento que se liste debe aparecer con el formato “1 – elemento”.
 
+
+## Marco teorico
+
+El programa se basa en diferentes acciones sobre una COLA de Pedidos, donde cada pedido esta compuesto por "id - nombre".
+Sobre el id recaen las validaciones de entero y de rango entre 0 y 999.
+Solo existe una cola por ejecucion.
