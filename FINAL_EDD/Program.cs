@@ -46,16 +46,18 @@ namespace FINAL_EDD
             while (opc != "11") //Creamos un ciclo para que se repita el menu hasta que el usuario quiera salir
             {
                 Console.Clear();
-                Console.WriteLine("\nMENU PRINCIPAL\n");
-                Console.WriteLine("1) Crear Cola");
-                Console.WriteLine("2) Borrar Cola");
-                Console.WriteLine("3) Agregar Pedido");
-                Console.WriteLine("4) Borrar Pedido");
-                Console.WriteLine("5) Listar todos los Pedidos");
-                Console.WriteLine("6) Listar ultimo Pedido");
-                Console.WriteLine("7) Listar primer Pedido");
-                Console.WriteLine("8) Cantidad de pedido");
-                Console.WriteLine("9) Modificar Descripcion del Pedido ");
+                Console.WriteLine("\nFINAL ESTRUCTURA DE DATOS TEMA 2 - COLA -");
+                Console.WriteLine("Carolina Nakasone\n");
+                Console.WriteLine("\nMenu Principal\n");
+                Console.WriteLine("1)  Crear Cola");
+                Console.WriteLine("2)  Borrar Cola");
+                Console.WriteLine("3)  Agregar Pedido");
+                Console.WriteLine("4)  Borrar Pedido");
+                Console.WriteLine("5)  Listar todos los Pedidos");
+                Console.WriteLine("6)  Listar ultimo Pedido");
+                Console.WriteLine("7)  Listar primer Pedido");
+                Console.WriteLine("8)  Cantidad de pedido");
+                Console.WriteLine("9)  Modificar descripcion del Pedido ");
                 Console.WriteLine("10) Generar documento de Pedido para imprimir.");
                 Console.WriteLine("11) Salir");
                 Console.Write("\r\nElija una opcion: ");
@@ -195,6 +197,15 @@ namespace FINAL_EDD
                         Console.WriteLine("\nNos vemos!");
                         Console.ReadKey();
                         return;
+
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nEsa opcion no es valida.");
+                        Console.ResetColor();
+                        break;
+
+
                 }
                 Console.WriteLine("\nPresione cualquier tecla para continuar.");
                 Console.ReadKey();
@@ -274,7 +285,7 @@ namespace FINAL_EDD
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nSe aceptan solo numeros enteros.");
                 Console.WriteLine("Se aceptan numeros entre 0 y 999.");
-                Console.WriteLine("El id ya existe, no puede haber dos iguales.");
+                Console.WriteLine("Recuerde que no puede haber dos ID iguales.");
                 Console.WriteLine("Ingrese un id correcto:");
                 Console.ResetColor();
                 string_id = Console.ReadLine();
@@ -487,7 +498,7 @@ namespace FINAL_EDD
                 DateTime today = DateTime.Now;  //Usamos datetime para agregar la fecha al archivo
                 DateTime dateonly = today.Date;
 
-                writer.WriteLine("Pedido del dia {0}.", today.ToString("MM/dd/yyyy HH:mm")); //Titulo del archivo
+                writer.WriteLine("Cola de pedidos del dia {0}.", today.ToString("MM/dd/yyyy HH:mm")); //Titulo del archivo
 
 
 

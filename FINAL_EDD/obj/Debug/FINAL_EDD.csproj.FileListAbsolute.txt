@@ -5,3 +5,10 @@ C:\Users\Caro\Desktop\IFTS\FINAL_EDD\obj\Debug\FINAL_EDD.csprojAssemblyReference
 C:\Users\Caro\Desktop\IFTS\FINAL_EDD\obj\Debug\FINAL_EDD.csproj.CoreCompileInputs.cache
 C:\Users\Caro\Desktop\IFTS\FINAL_EDD\obj\Debug\FINAL_EDD.exe
 C:\Users\Caro\Desktop\IFTS\FINAL_EDD\obj\Debug\FINAL_EDD.pdb
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\bin\Debug\FINAL_EDD.exe.config
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\bin\Debug\FINAL_EDD.exe
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\bin\Debug\FINAL_EDD.pdb
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\obj\Debug\FINAL_EDD.csprojAssemblyReference.cache
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\obj\Debug\FINAL_EDD.csproj.CoreCompileInputs.cache
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\obj\Debug\FINAL_EDD.exe
+C:\Users\Caro\Desktop\FINALEDD\FinalEDD\FINAL_EDD\obj\Debug\FINAL_EDD.pdb
