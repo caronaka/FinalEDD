@@ -1,0 +1,6 @@
+Cola de pedidos del dia 12/11/2020 15:02.
+
+Total pedidos: 2 
+
+1 - caramelos
+2 - chocolates

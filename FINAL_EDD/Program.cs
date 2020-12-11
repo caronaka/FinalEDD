@@ -53,10 +53,13 @@ namespace FINAL_EDD
 
 
             List<Queue<Pedidos>> listaCola = new List<Queue<Pedidos>>();  //creo esta lista de colas para validar si la cola NO existe
+            List<string> historial = new List<string>(); //Para el archivo log
 
             string opc = "0";
-            while (opc != "11") //Creamos un ciclo para que se repita el menu hasta que el usuario quiera salir
+            while (opc != "12") //Creamos un ciclo para que se repita el menu hasta que el usuario quiera salir
             {
+                historial.Add("Menu");
+
                 Console.Clear();
                 Console.WriteLine("\nFINAL ESTRUCTURA DE DATOS TEMA 2 - COLA -");
                 Console.WriteLine("Carolina Nakasone\n");
@@ -70,22 +73,24 @@ namespace FINAL_EDD
                 Console.WriteLine("7)  Listar primer Pedido");
                 Console.WriteLine("8)  Cantidad de pedido");
                 Console.WriteLine("9)  Modificar descripcion del Pedido ");
-                Console.WriteLine("10) Generar documento de Pedido para imprimir.");
-                Console.WriteLine("11) Salir");
+                Console.WriteLine("10) Generar documento de Pedidos para imprimir");
+                Console.WriteLine("11) Ver historial/log");
+                Console.WriteLine("12) Salir");
                 Console.Write("\r\nElija una opcion: ");
                 opc = Console.ReadLine();
 
-                
 
+                
 
                 switch (opc) //Menu
                 {
                     case "1":
-
+                        historial.Add("Crear Cola");
                         cola = CrearCola(listaCola); // la guardo en la variable que sera usada por los otros cases
                         break;
 
                     case "2":
+                        historial.Add("Borrar Cola");
                         if (!listaCola.Any())  //valida que la cola exista
                         {
                             Console.ForegroundColor = ConsoleColor.Red;  //cambia el color de texto a rojo
@@ -99,6 +104,7 @@ namespace FINAL_EDD
                         break;
 
                     case "3":
+                        historial.Add("Agregar Pedido");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -112,6 +118,7 @@ namespace FINAL_EDD
                         break;
 
                     case "4":
+                        historial.Add("Borrar Pedido");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -126,6 +133,7 @@ namespace FINAL_EDD
 
                     case "5":
 
+                        historial.Add("Listar todos los pedidos");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -139,6 +147,7 @@ namespace FINAL_EDD
                         break;
 
                     case "6":
+                        historial.Add("Listar ultimo pedido");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -152,6 +161,7 @@ namespace FINAL_EDD
                         break;
 
                     case "7":
+                        historial.Add("Listar primer pedido");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -165,6 +175,7 @@ namespace FINAL_EDD
                         break;
 
                     case "8":
+                        historial.Add("Cantidad de Pedidos");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -178,6 +189,7 @@ namespace FINAL_EDD
                         break;
 
                     case "9":
+                        historial.Add("Modificar Pedido");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -192,6 +204,7 @@ namespace FINAL_EDD
 
 
                     case "10":
+                        historial.Add("Generar Documento pero imprimir");
                         if (!listaCola.Any())
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -206,6 +219,16 @@ namespace FINAL_EDD
       
                     
                     case "11":
+                        historial.Add("Historial de consultas");
+                        Console.WriteLine("\nHistorial de consultas/log:\n");
+                        foreach (string cadena in historial)
+                        {
+                            Console.WriteLine(cadena);
+                        }
+                        Console.ReadKey();
+                        break;
+
+                    case "12":
                         Console.WriteLine("\nNos vemos!");
                         Console.ReadKey();
                         return;
@@ -498,13 +521,13 @@ namespace FINAL_EDD
 
 
 
-        public static void ImprimirPedido(Queue<Pedidos> cola) //Funcion que permite guardar la cola en un archivo para luego imprimirlo
+        public static void ImprimirPedido(Queue<Pedidos> cola) 
         {
             try
             {
-                Console.WriteLine("\nIngrese el nombre del archivo sin extension: "); //Te pide el nombre del archivo
+                Console.WriteLine("\nIngrese el nombre del archivo sin extension: "); 
 
-                string fileName = Console.ReadLine() + ".txt";  //Agrega extension
+                string fileName = Console.ReadLine() + ".txt";  
 
                 StreamWriter writer = File.CreateText(fileName);
                 //De la clase Streamwriter usamos metodo Createtext que crea o abre un archivo con el nombre que indiquemos.
@@ -512,16 +535,16 @@ namespace FINAL_EDD
                 DateTime today = DateTime.Now;  //Usamos datetime para agregar la fecha al archivo
                 DateTime dateonly = today.Date;
 
-                writer.WriteLine("Cola de pedidos del dia {0}.", today.ToString("MM/dd/yyyy HH:mm")); //Titulo del archivo
+                writer.WriteLine("Cola de pedidos del dia {0}.", today.ToString("MM/dd/yyyy HH:mm")); 
 
-
+                writer.WriteLine("\nTotal pedidos: {0} \n", cola.Count() );
 
                 foreach (Pedidos ped in cola)
                 {
                     writer.WriteLine("{0} - {1}", ped.Id, ped.Nombre);
                 }
 
-                writer.Close(); //Cierro archivo
+                writer.Close(); 
 
                 FileInfo fi = new FileInfo(fileName); //Uso Clase file info para acceder a informacion del archivo y luego poder consultar el directorio
                 DirectoryInfo di = fi.Directory; //Guardo el directorio en una variable para indicarselo al usuario
@@ -529,7 +552,7 @@ namespace FINAL_EDD
                 Console.WriteLine("\nEl archivo {0} esta listo para imprimir en la ruta {1}.", fileName.ToUpper(), di);
             }
 
-            catch (IOException) //Atrapa el error al manipular el archivo si es que hay
+            catch (IOException) 
             {
                 Console.WriteLine("\nError con el archivo.");
             }
